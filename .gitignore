@@ -1,0 +1,19 @@
+# Evita archivos de entorno
+.env
+*.json
+
+# Archivos de configuración locales
+*.streamlit/secrets.toml
+
+# Archivos temporales
+__pycache__/
+*.py[cod]
+*.log
+
+# VSCode y otros editores
+.vscode/
+.idea/
+
+# Entornos virtuales
+venv/
+env/
