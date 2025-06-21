@@ -17,20 +17,21 @@ st.title("Encuesta de satisfacción")
 with st.form("formulario"):
     codigo_paciente = st.text_input("Código del paciente (número entre 100-999)", max_chars=3)
 
-    dolor = st.selectbox("¿Ha referido dolor durante la administración?",
-                         ["No", "Leve", "Moderado", "Intenso"])
+    dolor = st.selectbox("¿Ha sentido dolor al administrar la inyección?",
+                         ["Nada de dolor", "Poco dolor", "Algo de dolor", "Mucho dolor", "Dolor insoportable"])
 
-    sangrado = st.selectbox("¿Ha habido sangrado tras la administración?",
-                            ["No", "Puntiforme", "Moderado", "Abundante"])
+    enrojecimiento = st.selectbox("¿Se ha producido enrojecimiento o inflamación en la zona de la inyección?",
+                                  ["No", "Sí, leve", "Sí, moderado", "Sí, intenso"])
 
-    enrojecimiento = st.selectbox("¿Ha habido enrojecimiento o inflamación local tras la administración?",
-                                  ["No", "Leve", "Moderado", "Intenso"])
+    sangrado = st.selectbox("¿Ha sangrado tras la administración?",
+                            ["No", "Sí, muy poco", "Sí, moderado", "Sí, abundante"])
 
     sensacion = st.selectbox("¿Ha notado alguna sensación anómala en la zona?",
-                             ["No", "Hormigueo", "Calor o ardor", "Adormecimiento", "Dolor persistente"])
+                             ["Ninguna", "Hormigueo", "Calor o ardor", "Adormecimiento", "Dolor persistente"])
 
-    general = st.selectbox("¿Cuál es su nivel de satisfacción general con la inyección recibida?",
-                           ["Muy satisfecho/a", "Satisfecho/a", "Indiferente", "Insatisfecho/a", "Muy insatisfecho/a"])
+    general = st.selectbox("¿Cuál es su satisfacción general con la inyección recibida?",
+                           ["Muy satisfecho/a", "Satisfecho/a", "Ni satisfecho/a ni insatisfecho/a",
+                            "Insatisfecho/a", "Muy insatisfecho/a"])
 
     submitted = st.form_submit_button("Enviar")
 
@@ -38,5 +39,5 @@ with st.form("formulario"):
         if not codigo_paciente.isdigit() or not (100 <= int(codigo_paciente) <= 999):
             st.error("Introduce un código válido entre 100 y 999.")
         else:
-            sheet.append_row([codigo_paciente, dolor, sangrado, enrojecimiento, sensacion, general])
+            sheet.append_row([codigo_paciente, dolor, enrojecimiento, sangrado, sensacion, general])
             st.success("¡Gracias! Tus respuestas han sido registradas correctamente.")
